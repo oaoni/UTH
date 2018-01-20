@@ -9,10 +9,8 @@ from . import searchform
 
 
 def index(request):
-#    template = loader.get_template("index.html")
-    form = searchform.SearchForm()
-    return render(request, 'index.html', {'form': form})
-#    return HttpResponse(template.render())
+    template = loader.get_template("index.html")
+    return HttpResponse(template.render())
 
 def search(request):
     message = 'No results'
