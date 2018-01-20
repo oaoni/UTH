@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://use.fontawesome.com/7e259c4801.js"></script>
+	<title></title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="{% static './css/style.css' %}">
+	</head>
+	
+	<body id="home">
+	
+	<!-- Navigation bar-->
+  <nav class="navbar navbar-inverse navbar-fixed-top shift" id="my-navbar">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a href="" class="navbar-brand">Genomic Analysis</a>
+      </div>
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#home">Home</a>
+          <li><a href="#about">About</a>
+          <li><a href="#data">Data</a>
+          <li><a href="#analysis">Analysis</a>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+	  <header class="masthead">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <h1 class="text-uppercase">
+              <strong>Genomic Data Analysis</strong>
+            </h1>
+            <hr>
+          </div>
+          <div class="col-lg-8 mx-auto">
+            <p class="text-faded mb-5">Instantly query gene expression data from the National Cancer Institute Data Portal, and cross validate results with PubMed</p>
+            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </header>
+	
+	<section id="about">
+	<div class="container">
+		<div class="row">
+		
+		
+		</div>
+	</div>
+	</section>
+	
+	
+	
+	<!-- JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="{% static './js/pagescroll.js' %}"></script>
+	</body>
+</html>
