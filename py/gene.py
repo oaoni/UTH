@@ -28,6 +28,22 @@ def fetch_details(id_list):
     results = Entrez.read(handle)
     return results
 
+def get_genes(query):
+    entrez_gene = 'Entrezgene_gene'
+    gene_ref = 'Gene-ref'
+    gene_locus = 'Gene-ref_locus'
+
+    results = search(query)
+    id_list = results['IdList']
+    papers = fetch_details(id_list)
+
+    genes_list = []
+    for i in range(len(papers)):
+        gene = papers[i][entrez_gene][gene_ref][gene_locus]
+        genes_list.append(gene)
+
+    return genes_list
+
 if __name__ == '__main__':
     # user_input = input()
 
