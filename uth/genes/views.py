@@ -9,7 +9,9 @@ from . import searchform
 
 
 def index(request):
-    template = loader.get_template("index.html")
+    message = ""
+    return render(request, 'index.html', {'results': message})
+#    template = loader.get_template("index.html")
     return HttpResponse(template.render())
 
 def search(request):
@@ -27,45 +29,25 @@ def search(request):
     elif (request.method == 'POST'):
         # create a form instance and populate it with data from the request:
         print(request.POST)
-        form = searchform.SearchForm(request.POST)
-        message = "message: " + str(request.POST)[4:]
-        print(message)
-        # check whether it's valid:
-        if form.is_valid():
-            sel1 = form.cleaned_data['sel1']
-            sel2 = form.cleaned_data['sel2']
-            nci_data = form.cleaned_data['inlineCheckbox1']
-            local_data = form.cleaned_data['inlineCheckbox2']
-            pubmed_data = form.cleaned_data['inlineCheckbox3']
+        if ('nci_data' in request.POST):
+            nci_data = request.POST['nci_data']
 
-        return HttpResponse(message)
+        if ('local_data' in request.POST):
+            local_data = request.POST['local_data']
+
+        if ('pubmed_data' in request.POST and 'sel2' in request.POST):
+            pubmed_data = request.POST['pubmed_data']
+            sel2 = request.POST['sel2']
+            slice = sel2.find('[')
+            sel2 = sel2[:slice-1]
+            pubmed_query = sel2 + '[All Fields]'
+            gene_list = gene.pubmed_get_genes(pubmed_query)
+            message = gene_list
+        print(message)
+
+        return render(request, 'index.html', {'results': message})
     else:
         form = searchform.SearchForm()
         return render(request, 'index.html', {'form': form})
 
-
-def a(request):
-# if this is a POST request we need to process the form data
-    if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        form = searchform.SearchForm(request.POST)
-        # check whether it's valid:
-        if form.is_valid():
-            sel1 = form.cleaned_data['sel1']
-            sel2 = form.cleaned_data['sel2']
-            nci_data = form.cleaned_data['inlineCheckbox1']
-            local_data = form.cleaned_data['inlineCheckbox2']
-            pubmed_data = form.cleaned_data['inlineCheckbox3']
-
-            message = (str(sel1) + '\n' +
-                        str(sel2) + '\n' +
-                        str(nci_data) + '\n' +
-                        str(local_data) + '\n' +
-                        str(pubmed_data))
-
-            return HttpResponseRedirect(message)
-    else:
-        form = searchform.SearchForm()
-
-    return render(request, 'index.html', {'form': form})
 
