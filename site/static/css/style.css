@@ -15,7 +15,21 @@ header.masthead {
   background-size: cover;
 }
 
+.masthead .btn{
+	background-color:#3387d7;
+}
+
 #about{
-	background-color:blue;
+	background-color:#3387d7;
 	min-height:200px;
+}
+
+#about h1{
+	color:white;
+	text-align:center;
+}
+
+#about p{
+	color:white;
+	text-align:center;
 }
