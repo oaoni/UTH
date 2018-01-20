@@ -55,7 +55,7 @@ ROOT_URLCONF = 'uth.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/home/shana/builds/UTH/uth/genes/templates/'],
+        'DIRS': [BASE_DIR + '/genes/templates/', BASE_DIR + '/getstarted/templates/'],
 #        'DIRS': ['/home/shana/builds/UTH/site/'],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -102,7 +102,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '/home/shana/builds/UTH/site/'
+STATIC_ROOT = BASE_DIR + '/../site'
 
 STATICFILES_DIRS = (
   os.path.join(BASE_DIR, 'static/'),
