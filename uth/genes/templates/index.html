@@ -77,18 +77,16 @@
 	</div>
 	</section>
 	
-	
-	
 	<section id="data">
 		<div class="container-fluid" style="padding-top:20px;">
 			<div class="container" style="min-height:30rem; background-color:white;">
 				<div class="row" style="min-height:100%">
-					<form>
+					<form action="search" method="post" id="search_form" name="search_form">
 						<div class="container pad_container">
 						
 						<div class="form-group" style="max-width:80%;">
 						  <label for="sel1">National Cancer Institute Data Portal:</label>
-						  <select class="form-control" id="sel1">
+						  <select name="sel1" class="form-control" id="sel1">
 							<option selected>Choose...</option>
 							<option>Liver Hepatocellular Carcinoma (LIHC)</option>
 							<option>Ductal Carcinoma In Situ (DCIS)</option>
@@ -97,7 +95,7 @@
 						
 						<div class="form-group" style="max-width:80%;">
 						  <label for="sel2">Pubmed:</label>
-						  <select class="form-control" id="sel2">
+						  <select name="sel2" class="form-control" id="sel2">
 							<option selected>Choose...</option>
 							<option>Liver Hepatocellular Carcinoma (LIHC)</option>
 							<option>Ductal Carcinoma In Situ (DCIS)</option>
@@ -106,25 +104,29 @@
 						
 						<div class="form-group">
 							<label for="localfile">Upload Local Data</label>
-							<input type="file" class="form-control-file" id="localFile">
+							<input name="localFile" type="file" class="form-control-file" id="localFile">
 						</div>
 						  
 						<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-						  <label class="form-check-label" for="inlineCheckbox1">NCI Data</label>
+						  <input class="form-check-input" name="nci_data" type="checkbox"
+							id="nci_data">
+						  <label class="form-check-label" for="nci_data">NCI Data</label>
 						</div>
 						
 						<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-						  <label class="form-check-label" for="inlineCheckbox2">Local Data</label>
+						  <input class="form-check-input" name="local_data" type="checkbox"
+							id="local_data">
+						  <label class="form-check-label" for="local_data">Local Data</label>
 						</div>
 						
 						<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+						  <input class="form-check-input" name="pubmed_data" type="checkbox"
+							id="pubmed_data">
 						  <label class="form-check-label" for="inlineCheckbox3">Pubmed Cross Reference</label>
 						</div>
-						  
-						<a type="submit" class="btn btn-primary btn-md" href="#" onclick="return false;" style="margin-top:5px; background-color:#3387d7;">
+						<input type="submit" value="submit" name="submit_form"/>
+						<a type="submit" value="submit" class="btn btn-primary btn-md"
+							style="margin-top:5px; background-color:#3387d7;">
 						<i class="fa fa-search"></i>Search</a>
 						</div>
 					</form>
