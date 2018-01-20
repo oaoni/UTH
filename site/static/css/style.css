@@ -33,3 +33,14 @@ header.masthead {
 	color:white;
 	text-align:center;
 }
+
+#data {
+	min-height:100%;
+	background-color:#efefef;
+}
+
+#data .pad_container{
+	padding-left:5%;
+	padding-right:5%;
+	padding-top:1%;
+}
