@@ -28,14 +28,17 @@ def search(request):
     elif (request.method == 'POST'):
         # create a form instance and populate it with data from the request:
         print(request.POST)
+        nci_results = None
         if ('nci_data' in request.POST):
             sel1 = request.POST['sel1']
             slice_at = sel1.find(']')
             sel1 = sel1[1:slice_at]
             # todo format query
             nci_query = sel1
-            gdc_query(nci_query)
+            file_name = gdc_query.gdc_query(nci_query)
             # todo process query
+            df = gdc_query.wrapper(file_name)
+            nci_results = str(df)
 
         if ('local_data' in request.POST):
             local_data = request.POST['local_data']
@@ -50,7 +53,7 @@ def search(request):
 
         print(message)
 
-        return render(request, 'index.html', {'results': message})
+        return render(request, 'index.html', {'results': message,'nci_results': nci_results})
     else:
         form = searchform.SearchForm()
         return render(request, 'index.html', {'form': form})
