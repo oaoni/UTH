@@ -27,8 +27,8 @@ def search(request):
     elif (request.method == 'POST'):
         # create a form instance and populate it with data from the request:
         print(request.POST)
-        nci_results = None
-        pubmed_results = None
+        nci_results = ""
+        pubmed_results = ""
         if ('nci_data' in request.POST):
             sel1 = request.POST['sel1']
             slice_at = sel1.find(']')
