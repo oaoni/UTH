@@ -73,11 +73,12 @@ def gdc_query(cancer):
 
     #with gzip.open(file_name, 'rb') as f:
       #  file_content = f.read()
+	  
+
 
 if __name__ == '__main __':
-    gdc_query(cancer)
 
-    file_name = gdc_query("LIHC")
+    file_name = gdc_query(cancer)
 
     tar = tarfile.open(file_name)
     tar.extractall("./temp")
@@ -95,4 +96,12 @@ if __name__ == '__main __':
     df = None
     for i in range(1,11):
         df = pd.concat([df,pd.read_table('tempfile'+ str(i) + '.txt', header=None, sep='\t')], axis=1)
+		
+	#Delete temporary file and directory
+    os.remove(file_name)
+    shutil.rmtree('.\temp')
+    for i in range(1,11):
+	    os.remove('tempfile'+str(i)+'.txt')
+		
+    df.head()
 
