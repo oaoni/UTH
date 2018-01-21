@@ -17,7 +17,7 @@ from django.contrib import admin
 
 urlpatterns = [
     path('genes/', include('genes.urls')),
-    path('getstarted/', include('getstarted.urls')),
+#    path('getstarted/', include('getstarted.urls')),
     path('admin/', admin.site.urls),
 ]
 

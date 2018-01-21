@@ -5,8 +5,6 @@ from django.template import Context, loader
 # Create your views here.
 
 from . import gene
-from . import searchform
-
 
 def index(request):
     message = ""
