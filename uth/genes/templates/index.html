@@ -149,8 +149,10 @@
 			<i class="fa fa-table fa-3x" aria-hidden="true" style="padding-left:5px; padding-top:4px">Data Summary</i>
 			</div>
 			<div class="row" style="">
+			{% autoescape off %}
+				{{ nci_results }}
+			{% endautoescape %}
 			{{ pubmed_results }}
-			{{ nci_results }}
 			</div>
 			</div>
 		

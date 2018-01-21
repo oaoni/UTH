@@ -38,7 +38,7 @@ def search(request):
             file_name = gdc_query.gdc_query(nci_query)
 
             df = gdc_query.wrapper(file_name)
-            nci_results = str(df)
+            nci_results = df
 
         if ('local_data' in request.POST):
             local_data = request.POST['local_data']

@@ -100,8 +100,12 @@ def wrapper(file_name):
     #shutil.rmtree('.\temp')
     #for i in range(1,11):
 	#    os.remove('tempfile'+str(i)+'.txt')
+    df = df.head()
+    df = df.to_html(header=None)
+    df = df[36:]
+    df = '<table class="table table-striped">'+df
 	
-    return df.head()
+    return df
 
 if __name__ == '__main __':
 		
