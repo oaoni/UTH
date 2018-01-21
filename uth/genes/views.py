@@ -8,8 +8,8 @@ from . import gene
 from . import gdc_query
 
 def index(request):
-    message = ""
-    return render(request, 'index.html', {'results': message})
+    return render(request, 'index.html',
+        {'pubmed_results': "",'nci_results': ""})
 #    template = loader.get_template("index.html")
     return HttpResponse(template.render())
 
