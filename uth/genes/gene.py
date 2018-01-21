@@ -43,7 +43,8 @@ def format_query(query):
 
     return query
 
-def get_genes(query):
+def pubmed_get_genes(query):
+    print("querying PubMed for:", query)
 
     genes_list = []
 
