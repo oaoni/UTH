@@ -14,7 +14,6 @@ def index(request):
     return HttpResponse(template.render())
 
 def search(request):
-    message = 'No results'
     print('request:', request)
     print('request.method:', request.method)
 # if this is a POST request we need to process the form data
@@ -29,14 +28,15 @@ def search(request):
         # create a form instance and populate it with data from the request:
         print(request.POST)
         nci_results = None
+        pubmed_results = None
         if ('nci_data' in request.POST):
             sel1 = request.POST['sel1']
             slice_at = sel1.find(']')
             sel1 = sel1[1:slice_at]
-            # todo format query
+
             nci_query = sel1
             file_name = gdc_query.gdc_query(nci_query)
-            # todo process query
+
             df = gdc_query.wrapper(file_name)
             nci_results = str(df)
 
@@ -49,13 +49,9 @@ def search(request):
             sel2 = sel2[:slice_at-1]
             pubmed_query = sel2 + '[All Fields]'
             gene_list = gene.pubmed_get_genes(pubmed_query)
-            message = gene_list
+            pubmed_results = gene_list
 
-        print(message)
-
-        return render(request, 'index.html', {'results': message,'nci_results': nci_results})
+        return render(request, 'index.html', {'pubmed_results': pubmed_results,'nci_results': nci_results})
     else:
         form = searchform.SearchForm()
         return render(request, 'index.html', {'form': form})
-
-
