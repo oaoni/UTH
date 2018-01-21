@@ -30,10 +30,10 @@ def search(request):
         print(request.POST)
         if ('nci_data' in request.POST):
             sel1 = request.POST['sel1']
-            slice_at = sel2.find(']')
-            sel2 = sel2[slice_at+1:]
+            slice_at = sel1.find(']')
+            sel1 = sel1[1:slice_at]
             # todo format query
-            nci_query = ''
+            nci_query = sel1
             gdc_query(nci_query)
             # todo process query
 
