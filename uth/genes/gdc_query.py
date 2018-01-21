@@ -64,37 +64,35 @@ def gdc_query(cancer):
     response_head_cd = response.headers["Content-Disposition"]
 
     file_name = re.findall("filename=(.+)", response_head_cd)[0]
-    
+
     with open(file_name, "wb") as output_file:
         output_file.write(response.content)
-            
+
     return file_name
 
-    
+
     #with gzip.open(file_name, 'rb') as f:
       #  file_content = f.read()
-        
-		
-file_name = gdc_query("LIHC")
-        
-tar = tarfile.open(file_name)
-tar.extractall("./temp")
-    
-count = 0
-for root, subdirs, files in os.walk('temp'):
-    if files[0][-3:] == '.gz':
-        with gzip.open(root +'\\'+ files[0], 'rb') as f:
-            file_content = f.read()  
-            exp = file_content.decode("utf-8") 
-            file = open("tempfile" + str(count) + ".txt","w") 
-            file.write(exp)
-    count = count + 1
-    
-df = None
-for i in range(1,11):
-    df = pd.concat([df,pd.read_table('tempfile'+ str(i) + '.txt', header=None, sep='\t')], axis=1)		
-		
-	
-		
-#if __name__ == '__main __':
-#	gdc_query(cancer)
+
+if __name__ == '__main __':
+    gdc_query(cancer)
+
+    file_name = gdc_query("LIHC")
+
+    tar = tarfile.open(file_name)
+    tar.extractall("./temp")
+
+    count = 0
+    for root, subdirs, files in os.walk('temp'):
+        if files[0][-3:] == '.gz':
+            with gzip.open(root +'\\'+ files[0], 'rb') as f:
+                file_content = f.read()
+                exp = file_content.decode("utf-8")
+                file = open("tempfile" + str(count) + ".txt","w")
+                file.write(exp)
+        count = count + 1
+
+    df = None
+    for i in range(1,11):
+        df = pd.concat([df,pd.read_table('tempfile'+ str(i) + '.txt', header=None, sep='\t')], axis=1)
+

@@ -5,6 +5,7 @@ from django.template import Context, loader
 # Create your views here.
 
 from . import gene
+from . import gdc_query
 
 def index(request):
     message = ""
