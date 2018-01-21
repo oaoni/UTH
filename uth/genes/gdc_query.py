@@ -93,6 +93,8 @@ def wrapper(file_name):
     for i in range(1,11):
         df = pd.concat([df,pd.read_table('tempfile'+ str(i) + '.txt', header=None, sep='\t')], axis=1)
 		
+    df = df.drop(df.columns[[2, 4, 6,8,10,12,14,16,18]], axis=1)
+		
 	#Delete temporary file and directory
     #os.remove(file_name)
     #shutil.rmtree('.\temp')

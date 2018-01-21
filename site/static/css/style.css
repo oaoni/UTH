@@ -3,6 +3,10 @@ body,html {
   height: 100%;
 }
 
+.navbar {
+	z-index:1;
+}
+
 header.masthead {
   padding-top: 10rem;
   min-height: 100%;
@@ -21,7 +25,8 @@ header.masthead {
 
 #about{
 	background-color:#3387d7;
-	min-height:200px;
+	min-height:300px;
+	padding-top:50px;
 }
 
 #about h1{
@@ -37,6 +42,7 @@ header.masthead {
 #data {
 	min-height:100%;
 	background-color:#efefef;
+	padding-top:50px;
 }
 
 #data .pad_container{
