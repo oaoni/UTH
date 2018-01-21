@@ -29,19 +29,25 @@ def search(request):
         # create a form instance and populate it with data from the request:
         print(request.POST)
         if ('nci_data' in request.POST):
-            nci_data = request.POST['nci_data']
+            sel1 = request.POST['sel1']
+            slice_at = sel2.find(']')
+            sel2 = sel2[slice_at+1:]
+            # todo format query
+            nci_query = ''
+            gdc_query(nci_query)
+            # todo process query
 
         if ('local_data' in request.POST):
             local_data = request.POST['local_data']
 
         if ('pubmed_data' in request.POST and 'sel2' in request.POST):
-            pubmed_data = request.POST['pubmed_data']
             sel2 = request.POST['sel2']
-            slice = sel2.find('[')
-            sel2 = sel2[:slice-1]
+            slice_at = sel2.find('[')
+            sel2 = sel2[:slice_at-1]
             pubmed_query = sel2 + '[All Fields]'
             gene_list = gene.pubmed_get_genes(pubmed_query)
             message = gene_list
+
         print(message)
 
         return render(request, 'index.html', {'results': message})
